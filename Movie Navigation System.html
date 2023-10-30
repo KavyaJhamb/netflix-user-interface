@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)file:///C:/Users/kavya/kavyaa.ritika.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Movie Navigation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+        .movie-container {
+            width: 300px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+        }
+        #movie-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        #movie-description {
+            font-size: 14px;
+            color: #666;
+        }
+        #movie-genre {
+            font-size: 14px;
+            color: #888;
+        }
+        #movie-release-date {
+            font-size: 14px;
+            color: #888;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        select, #go-to-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="movie-container">
+        <div id="movie-title">Movie Title 1</div>
+        <div id="movie-description">Description 1</div>
+        <div id="movie-genre">Genre: Action</div>
+        <div id="movie-release-date">Release Date: 2022-01-15</div>
+    </div>
+    <br>
+    <button id="previous-button">Previous</button>
+    <button id="next-button">Next</button>
+    <button id="random-access-button">Random Access</button>
+
+    <div>
+        <label for="movie-selection">Select a Movie:</label>
+        <select id="movie-selection">
+            <option value="0">Movie Title 1</option>
+            <option value="1">Movie Title 2</option>
+            <option value="2">Movie Title 3</option>
+        </select>
+        <button id="go-to-button">Go To</button>
+    </div>
+
+    <script>
+        // Sample movie data
+        const titles = ["Movie Title 1", "Movie Title 2", "Movie Title 3"];
+        const descriptions = ["Description 1", "Description 2", "Description 3"];
+        const genres = ["Action", "Comedy", "Drama"];
+        const releaseDates = ["2022-01-15", "2021-11-20", "2022-02-10"];
+
+        let currentIndex = 0;
+
+        function updateMovieDisplay() {
+            document.getElementById("movie-title").textContent = titles[currentIndex];
+            document.getElementById("movie-description").textContent = descriptions[currentIndex];
+            document.getElementById("movie-genre").textContent = "Genre: " + genres[currentIndex];
+            document.getElementById("movie-release-date").textContent = "Release Date: " + releaseDates[currentIndex];
+            document.getElementById("movie-selection").value = currentIndex;
+        }
+
+        document.getElementById("previous-button").addEventListener("click", function () {
+            currentIndex = (currentIndex - 1 + titles.length) % titles.length;
+            updateMovieDisplay();
+        });
+
+        document.getElementById("next-button").addEventListener("click", function () {
+            currentIndex = (currentIndex + 1) % titles.length;
+            updateMovieDisplay();
+        });
+
+        document.getElementById("random-access-button").addEventListener("click", function () {
+            currentIndex = Math.floor(Math.random() * titles.length);
+            updateMovieDisplay();
+        });
+
+        document.getElementById("go-to-button").addEventListener("click", function () {
+            currentIndex = parseInt(document.getElementById("movie-selection").value);
+            updateMovieDisplay();
+        });
+
+        // Initial display
+        updateMovieDisplay();
+    </script>
+
+
+</body></html>
