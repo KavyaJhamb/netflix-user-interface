@@ -3,5 +3,7 @@ This project was developed as part of my Data Structures and Algorithms (DSA) cl
 Key features include:
 
 Sequential navigation using a doubly linked list.
+
 Random access to any movie in the list.
+
 Dynamic updates of movie details (title, description, genre, release date).
